@@ -4,7 +4,7 @@ namespace phatsk;
  * PHP_TableFlip class
  * Namespace: phatsk
  * Author: github.com/phatsk
- * Version: 0.1.1
+ * Version: 0.1.2
  * Description: Stupid little class to extend execption and error handling to include the
  * table flip emote. Makes errors more funner. By default, this class doesn't bind it's
  * handlers unless you pass true to the very first call of ::get_instance (or you manually
@@ -186,5 +186,3 @@ if ( ! class_exists( 'phatsk\\PHP_TableFlip' ) ) {
 		}
 	}
 }
-
-echo PHP_TableFlip::manual_flip('emotional_flip');

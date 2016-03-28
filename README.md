@@ -47,6 +47,10 @@ not?
 
 # Versions
 
+## 0.1.2
+
+* Fix testing code that got checked in.
+
 ## 0.1.1
 
 * Add a fix table
