@@ -5,7 +5,7 @@ A simple and stupid Exception/error handler for PHP.
 
 # Requirements
 
-* PHP 5, PHP 5 for exceptions
+* PHP 5, PHP 7 for exceptions
 * PHP 4 >= 4.01, PHP 5, PHP 7 for error handling
 
 # How to Use
