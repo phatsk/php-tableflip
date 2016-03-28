@@ -4,7 +4,7 @@ namespace phatsk;
  * PHP_TableFlip class
  * Namespace: phatsk
  * Author: github.com/phatsk
- * Version: 0.1.3
+ * Version: 0.1.4
  * Description: Stupid little class to extend execption and error handling to include the
  * table flip emote. Makes errors more funner. By default, this class doesn't bind it's
  * handlers unless you pass true to the very first call of ::get_instance (or you manually
@@ -187,14 +187,72 @@ if ( ! class_exists( 'phatsk\\PHP_TableFlip' ) ) {
 	}
 }
 
-if ( defined( 'WPINC' ) ) {
+if ( defined( 'ABSPATH' ) ) {
+	/**
+	 * WordPress class.
+	 *
+	 * TODO
+	 * * Shortcode support.
+	 * * Hook into various wp_error places.
+	 * * ??? (404?).
+	 * * Settings screen.
+	 */
 	class WP_TableFlip extends PHP_TableFlip {
+		/**
+		 * Return the static instance if available, or create a new one.
+		 *
+		 * @since  0.1.4
+		 * @param  bool $autobind True to have the class do the exception/error bindings.
+		 *
+		 * @return phatsk\PHP_TableFlip
+		 */
+		public static function get_instance( $autobind = false ) {
+			if ( self::$instance ) {
+				return self::$instance;
+			}
+
+			self::$instance = new self( $autobind );
+			return self::$instance;
+		}
+
+		/**
+		 * Override parent constructor to include some WP-specific stuff.
+		 *
+		 * @since 0.1.3
+		 */
 		public function __construct( $autobind = false ) {
 			# TODO: stub for extending into modifying some wp_error filters.
 			#$this->hooks();
 
 			// Force autobind. Since it's a plugin, if you want it off, deactivate the plugin.
 			parent::__construct( true );
+
+			$this->attach_shortcodes();
+		}
+
+		/**
+		 * For shortcodes.
+		 *
+		 * @since 0.1.4
+		 */
+		protected function attach_shortcodes() {
+			add_shortcode( 'tableflip', array( $this, 'do_shortcode' ) );
+		}
+
+		/**
+		 * Attach to the tableflip shortcode.
+		 *
+		 * @since  0.1.4
+		 * @param  array $attr The attributes passed to the shortcode.
+		 *
+		 * @return meme|string
+		 */
+		public function do_shortcode( $attr ) {
+			$attr = shortcode_atts( array(
+				'type' => 'flip',
+			), $attr );
+
+			return self::manual_flip( $attr['type'] );
 		}
 	}
 
