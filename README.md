@@ -1,4 +1,4 @@
-# Table Flip for PHP
+# Table Flip for PHP (and WordPress)
 ## (╯°□°）╯︵ ┻━┻)
 
 A simple and stupid Exception/error handler for [PHP](http://php.net) and [WordPress](http://wordpress.org).
@@ -40,6 +40,7 @@ echo phatsk\PHP_TableFlip::FIX; // // ┬─┬ノ(ಠ_ಠノ)
 * Clone or download the repo
 * Stick the folder in your `wp-content/plugins` folder.
 * Activate it in your admin plugins screen under "PHP TableFlip for WordPress"
+* Please note that the WordPress version enforces `$autobind=true`, read the source if you want to know why.
 
 # Why?
 
