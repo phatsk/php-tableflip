@@ -23,6 +23,14 @@ phatsk\PHP_TableFlip::get_instance( true );
 
 // Bind the error handler yourself.
 set_error_handler( array( 'phatsk\PHP_TableFlip', 'flip_error' ) );
+
+// You can also flip and fix tables yourself (as of 0.1.1)
+echo phatsk\PHP_TableFlip::manual_flip(); // (╯°□°）╯︵ ┻━┻
+echo phatsk\PHP_TableFlip::manual_flip( 'fix' ); // ┬─┬ノ(ಠ_ಠノ)
+echo phatsk\PHP_TableFlip::manual_flip( 'emotional' ); // (ノಠ益ಠ)ノ彡┻━┻
+
+// Or just use the damn constants.
+echo phatsk\PHP_TableFlip::FIX; // // ┬─┬ノ(ಠ_ಠノ)
 ```
 
 # Why?
@@ -39,9 +47,15 @@ not?
 
 # Versions
 
+## 0.1.1
+
+* Add a fix table
+* Add an emotional flip
+* Add a largely useless helper function, `manual_flip`
+
 ## 0.1
 
-* Initial build. 
+* Initial build.
 
 # Roadmap
 
