@@ -1,12 +1,14 @@
 # Table Flip for PHP
 ## (╯°□°）╯︵ ┻━┻)
 
-A simple and stupid Exception/error handler for PHP.
+A simple and stupid Exception/error handler for [PHP](http://php.net) and [WordPress](http://wordpress.org).
 
 # Requirements
 
 * PHP 5, PHP 7 for exceptions
 * PHP 4 >= 4.01, PHP 5, PHP 7 for error handling
+* WordPress 4.x probably, if you want it in WordPress
+* **NB** This does not *require* WordPress, it just happens to have support for it.
 
 # How to Use
 
@@ -33,6 +35,12 @@ echo phatsk\PHP_TableFlip::manual_flip( 'emotional' ); // (ノಠ益ಠ)ノ彡�
 echo phatsk\PHP_TableFlip::FIX; // // ┬─┬ノ(ಠ_ಠノ)
 ```
 
+### WordPress Instructions
+
+* Clone or download the repo
+* Stick the folder in your `wp-content/plugins` folder.
+* Activate it in your admin plugins screen under "PHP TableFlip for WordPress"
+
 # Why?
 
 I was actually inspired by [this little ruby gem](https://github.com/iridakos/table_flipper). Otherwise, because why
@@ -46,6 +54,16 @@ not?
 * Submit a PR
 
 # Versions
+
+## 0.1.4
+
+* WordPress shortcode support is here!
+* `[tableflip]` for the standard flipper.
+* `[tableflip type="flip|fix|emotional]` same as calling `manual_flip`
+
+## 0.1.3
+
+* Added initial WordPress support
 
 ## 0.1.2
 
