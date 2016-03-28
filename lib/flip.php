@@ -4,7 +4,7 @@ namespace phatsk;
  * PHP_TableFlip class
  * Namespace: phatsk
  * Author: github.com/phatsk
- * Version: 0.1.2
+ * Version: 0.1.3
  * Description: Stupid little class to extend execption and error handling to include the
  * table flip emote. Makes errors more funner. By default, this class doesn't bind it's
  * handlers unless you pass true to the very first call of ::get_instance (or you manually
@@ -185,4 +185,18 @@ if ( ! class_exists( 'phatsk\\PHP_TableFlip' ) ) {
 			return constant( "self::{$type}" );
 		}
 	}
+}
+
+if ( defined( 'WPINC' ) ) {
+	class WP_TableFlip extends PHP_TableFlip {
+		public function __construct( $autobind = false ) {
+			# TODO: stub for extending into modifying some wp_error filters.
+			#$this->hooks();
+
+			// Force autobind. Since it's a plugin, if you want it off, deactivate the plugin.
+			parent::__construct( true );
+		}
+	}
+
+	WP_TableFlip::get_instance();
 }
