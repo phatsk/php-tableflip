@@ -4,7 +4,7 @@ namespace phatsk;
  * PHP_TableFlip class
  * Namespace: phatsk
  * Author: github.com/phatsk
- * Version: 0.1
+ * Version: 0.1.1
  * Description: Stupid little class to extend execption and error handling to include the
  * table flip emote. Makes errors more funner. By default, this class doesn't bind it's
  * handlers unless you pass true to the very first call of ::get_instance (or you manually
@@ -28,6 +28,22 @@ if ( ! class_exists( 'phatsk\\PHP_TableFlip' ) ) {
 		 * @var meme|string
 		 */
 		const FLIP = '(╯°□°）╯︵ ┻━┻';
+
+		/**
+		 * The fixing emote.
+		 *
+		 * @since 0.1.1
+		 * @var meme|string
+		 */
+		const FIX = '┬─┬ノ(ಠ_ಠノ)';
+
+		/**
+		 * The emotional table flip, for when you mean business.
+		 *
+		 * @since 0.1.1
+		 * @var meme|string
+		 */
+		const EMOTIONAL = '(ノಠ益ಠ)ノ彡┻━┻';
 
 		/**
 		 * Return the static instance if available, or create a new one.
@@ -149,5 +165,26 @@ if ( ! class_exists( 'phatsk\\PHP_TableFlip' ) ) {
 				exit(1);
 			}
 		}
+
+		/**
+		 * Method for flipping when and how you like.
+		 *
+		 * @since 0.1.1
+		 * @param string $type The type of flip, corresponds to the class constants. Or just use the constants, I don't
+		 * care.
+		 *
+		 * @return meme|string
+		 */
+		public static function manual_flip( $type = 'flip' ) {
+			$type = strtoupper( $type );
+
+			if ( ! constant( "self::{$type}" ) ) {
+				throw new \Exception( self::EMOTIONAL . ' - Incorrect flip flopped!' );
+			}
+
+			return constant( "self::{$type}" );
+		}
 	}
 }
+
+echo PHP_TableFlip::manual_flip('emotional_flip');
